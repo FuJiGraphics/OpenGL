@@ -6,13 +6,15 @@ workspace "OpenGL"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Dependencies/glfw/include"
 IncludeDir["GLM"] = "Dependencies/glm/glm"
+IncludeDir["NRLOG"] = "Dependencies/nrlog/include"
+IncludeDir["GLEW"] = "Dependencies/glew/include"
 
 project "OpenGL"
     location "Source"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++20"
-    staticruntime "off"
+    staticruntime "on"
     systemversion "latest"
 
     targetdir ("Build/bin/%{cfg.buildcfg}")
@@ -33,12 +35,16 @@ project "OpenGL"
     {
         "Source/pch",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.GLM}"
+        "%{IncludeDir.GLM}",
+        "%{IncludeDir.NRLOG}",
+        "%{IncludeDir.GLEW}"
     }
 
     links
     {
-        "Dependencies/glfw/lib-vc2022/glfw3.lib",
+        "Dependencies/glfw/lib-vc2022/glfw3_mt.lib",
+        "Dependencies/nrlog/nrlog_mt.lib",
+        "Dependencies/glew/lib/Release/x64/glew32s.lib",
         "Opengl32.lib"
     }
 
