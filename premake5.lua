@@ -48,6 +48,11 @@ project "OpenGL"
         "Opengl32.lib"
     }
 
+    defines 
+    { 
+        "GLEW_STATIC" 
+    }
+
     filter "configurations:Debug"
         runtime "Debug"
         symbols "On"
